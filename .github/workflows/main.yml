@@ -3,7 +3,7 @@ name: Deploy supertyler.com
 on: push
 
 env:
-  NODE_JS_VERSION: 12
+  NODE_JS_VERSION: 20
 
 jobs:
   main:
@@ -13,18 +13,18 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_JS_VERSION }}
-        
+
     - name: Verify Node.js
       run: node --version
 
     - name: Verify npm
       run: npm -v
-      
+
     - name: Checkout source
       uses: actions/checkout@v2
       with:
         path: source
-            
+
     - name: Generate
       run: |
         cd ./source
@@ -40,7 +40,7 @@ jobs:
 
     - name: Copy generated file to site
       run: cp -r ./source/dist/. ./site
-        
+
     - name: Push site
       run: |
         cd ./site
