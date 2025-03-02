@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Setup Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ env.NODE_JS_VERSION }}
 
@@ -21,7 +21,7 @@ jobs:
       run: npm -v
 
     - name: Checkout source
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         path: source
 
@@ -31,8 +31,8 @@ jobs:
         npm install
         npm run build
         npm run generate
-    - name: Checkout SuperTylerX.github.io site
-      uses: actions/checkout@v2
+    - name: Checkout site
+      uses: actions/checkout@v4
       with:
         repository: iosxx/iosxx.github.io
         path: site
